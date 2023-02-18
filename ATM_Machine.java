@@ -37,10 +37,15 @@ public class ATM {
 		}
 		return account;
 	}
-	public static void data() { 
-		//ATM.depositing_Money();
-	}
 
+	/*
+	 * This is a static method which is used to create a new Account for the user. This method doesn't have any parameters but uses 
+	 * the Scanner class to take the input from the user. It uses the "create_Account_Number" method to generate account number
+	 * for the user.
+	 * This method has no return type
+	 * After creating the account, it displays the account number to user for reference and also asks the user if he wants to see the
+	 * Main Menu again 
+	 */
 	public static void creating_Account() {
 		System.out.println("In order to create your account kindly enter the details below");
 		System.out.println("Enter First name :");
@@ -85,6 +90,18 @@ public class ATM {
 		}
 
 	}
+
+	/*
+	 * This is a static method which used to deposit money in the account of the user.
+	 * The method doesn't have any parameters and uses the Scanner class to take the input from the user.
+	 * It calls the "read_value" method of the Create_Table class to get the details of the user and then performs the action accordingly
+	 * The method allows the ATM machine to accept three wrong inputs for the pin and after that it declines the transaction and displays 
+	 * the appropriate method
+	 * The method creates a temporary Person object to store the data entered by the user and then uses the "update_Value" method of the
+	 * Create_Table class to update the information in the database
+	 * It displays the confimation message to user for reference, once the action has been done and also asks the user if he wants to see 
+	 * the Main Menu again 
+	 */
 	public static void depositing_Money() {
 		count1=3;
 		count2=3;
@@ -163,6 +180,17 @@ public class ATM {
 			System.exit(0);
 		}
 	}
+	/*
+	 * This is a static method which used to withdraw money from the account of the user.
+	 * The method doesn't have any parameters and uses the Scanner class to take the inputs from the user.
+	 * It calls the "read_value" method of the Create_Table class to get the details of the user and then performs the action accordingly
+	 * The method allows the ATM machine to accept three wrong inputs for the pin and after that it declines the transaction and displays 
+	 * the appropriate method
+	 * The method creates a temporary Person object to store the data entered by the user and then uses the "update_Value" method of the
+	 * Create_Table class to update the information in the database
+	 * It displays the confimation message to user for reference, once the action has been done and also asks the user if he wants to see 
+	 * the Main Menu again 
+	 */
 	public static void withdraw_amount() {
 		count1=3;
 		count2=3;
@@ -241,6 +269,18 @@ public class ATM {
 			System.exit(0);
 		}
 	}
+	/*
+	 * This is a static method which used to display the balance in the account of the user.
+	 * The method doesn't have any parameters and uses the Scanner class to take the input from the user.
+	 * It calls the "read_value" method of the Create_Table class to get the details of the user and then performs the action accordingly
+	 * The method allows the ATM machine to accept three wrong inputs for the pin and after that it declines the transaction and displays 
+	 * the appropriate method
+	 * The method creates a temporary Person object to store the data entered by the user and then uses the "update_Value" method of the
+	 * Create_Table class to update the information in the database
+	 * Besides Balance, it also allows the machine to ask the user if he wants to see the history of his account.
+	 * It displays the Balance to user for reference, once the action has been done and also asks the user if he wants to see 
+	 * the Main Menu again 
+	 */
 	public static void checking_Balance() {
 		count1=3;
 		count2=3;
@@ -294,6 +334,17 @@ public class ATM {
 			}
 		}
 	}
+	/*
+	 * This is a static method which used to change the pin of the account of the user.
+	 * The method doesn't have any parameters and uses the Scanner class to take the input from the user.
+	 * It calls the "read_value" method of the Create_Table class to get the details of the user and then performs the action accordingly
+	 * The method allows the ATM machine to accept three wrong inputs for the pin and after that it declines the transaction and displays 
+	 * the appropriate method
+	 * The method creates a temporary Person object to store the data entered by the user and then uses the "update_Value" method of the
+	 * Create_Table class to update the information in the database
+	 * It displays the confimation message to user for reference, once the action has been done and also asks the user if he wants to see 
+	 * the Main Menu again 
+	 */
 	public static void change_pin() {
 		count1=3;
 		count2=3;
@@ -357,6 +408,11 @@ public class ATM {
 			System.exit(0);
 		}
 	}
+
+	/*
+	 * This is the main method of this class. It greets the user when it's called and then displays a set of choices. 
+	 * It accpets the input using the Scanner class and then uses switch statement to implement the choice entetred by the user
+	 */
 	public static void menu() {
 		System.out.println("Greetings..!! How may I help you?");
 		System.out.println("Press 1 for Creating an account"+"\n"+"Press 2 for Depositing money"+
@@ -397,16 +453,24 @@ public class ATM {
 import java.util.ArrayList;
 
 /*
- * This class stores the detail of the user who's using the ATM machine of the bank. It has getters and setters which provide access to 
- * the private instance variables of the class
+ * This class stores the detail of the user who's using the ATM machine of the bank. It has getters and setters which 
+ * provide access to the private instance variables of the class
  */
 public class Person {
-
+    
+	/*
+	 * Instance variables to store the different details of the user who's having an account in the bank
+	 */
 	private String name,address,phone,dob;
 	private int pin;
 	private String account_number;
 	private int balance;
 	private ArrayList<String> history;
+
+	/*
+	 * Constructor of Person class
+	 * Initalizes the instance variables of this class
+	 */
 	public Person(String name,String address,String phone,String dob){
 		this.name=name;
 		this.address=address;
@@ -415,48 +479,68 @@ public class Person {
 		history = new ArrayList<>();
 		balance=0;
 	}
+	/*
+	 * Default constructor of the Person class
+	 */
 	public Person() {
 		this("","","","");
 	}
+
+	/*
+	 * Setters and Getter functions for the private instance variables of the Person class
+	 */
 	public void setPin(int pin) {
 		this.pin=pin;
 	}
+
     public void depositAmount(int cash) {
     	this.balance+=cash;
     }
+
     public void withdrawAmount(int cash) {
     	this.balance-=cash;
     }
+
     public void setHistory(String history) {
     	this.history.add(history);
     }
+
 	public void set_Account_Number(String number) {
 		this.account_number=number;
 	}
+
 	public String getName() {
 		return this.name;
 	}
+
 	public String getAddress() {
 		return this.address;
 	}
+
 	public String getPhone() {
 		return this.phone;
 	}
+
 	public String getDob() {
 		return this.dob;
 	}
+
 	public int getPin() {
 		return this.pin;
 	}
+
 	public String getAccount_number() {
 		return this.account_number;
 	}
+
 	public int getBalance() {
 		return this.balance;
 	}
+
     public String get_History(){
     	return this.history.toString();
     }
+
     public String toString() {
     	String answer="";
     	answer+="Name: "+this.name+"\n";
@@ -478,8 +562,8 @@ import javax.naming.spi.DirStateFactory.Result;
 import org.postgresql.util.PSQLException;
 
 /*
- * This class executrs queries of SQL to create a database storing the information of the cutomers and returning the information for performing
- * various actions as mentioned above
+ * This class executes queries of SQL to create a database storing the information of the cutomers and returning the information 
+ * for performing various actions as mentioned above
  */
 public class Create_Table {
          
@@ -487,10 +571,11 @@ public class Create_Table {
 	static Statement statement = null;
 	
 	static Connect obj = new Connect();
-	
-	public static void main(String[] args) {
-		//Create_Table.insert_Value();
-	}
+
+    /*
+	 * This is a static method, it creates the table title "Accounts" in SQL database which is used to store the information of the data
+	 * This method is called by "creating_Account" method of ATM class to store user info 
+	 */
 	public static void create_Table(int a) {
 		
 		connection = obj.get_Connect();
@@ -507,6 +592,11 @@ public class Create_Table {
 			System.out.println(e);
 		}
 	}
+
+	/*
+	 * This is a static method which stores the value of the user into SQL Database
+	 * It takes user's name,address,phone number,date of birth,balance amount,balance History,Pin and account number as parameter
+	 */
 	public static void insert_Value(int a,String Name, String Address, String Phone, String DOB, int Balance, String History, int Pin, String account) {
 		
 		connection = obj.get_Connect();
@@ -528,6 +618,11 @@ public class Create_Table {
 			System.out.println(e);
 		}
 	}
+
+	/*
+	 * This method is used to return the details of the account of a user who wishes to deposit/withdraw moeny or check balance
+	 * It take user's name and account_number as parameters
+	 */
 	public static String read_Value(String name,String number) {
 		connection = obj.get_Connect();
 		ResultSet rs = null;
@@ -552,6 +647,10 @@ public class Create_Table {
 		}
 		return list;
 	}
+	/*
+	 * This method is used to return the details of the account of a user who wishes to change the pin of his account
+	 * It take user's name and account_number as parameters
+	 */
 	public static String read_Value_1(String name,String number) {
 		connection = obj.get_Connect();
 		ResultSet rs = null;
@@ -574,6 +673,13 @@ public class Create_Table {
 		}
 		return list;
 	}
+
+	/*
+	 * This method updates the information about the user in the SQL Database
+	 * It returns true or false based on whether the updation took place or not
+	 * It takes an ArrayList variable as a parameter which has the updated information of the user
+	 * It is called when the user wants to withdraw/deposit money
+	 */
 	public static boolean update_Value(ArrayList list)  {
 		// for list item 1: serial, item2 : balance , item3: history, item4: pin
 		connection = obj.get_Connect();
@@ -592,6 +698,13 @@ public class Create_Table {
 		}
 	    return false;
 	}
+
+	/*
+	 * This method updates the information about the user in the SQL Database
+	 * It returns true or false based on whether the updation took place or not
+	 * It takes an ArrayList variable as a parameter which has the updated information of the user
+	 * It is called when the user wants to change the pin of his account
+	 */
 	public static boolean update_Value_1(ArrayList list)  {
 		// for list item 1: serial, item2 : balance , item3: history, item4: pin
 		connection = obj.get_Connect();
