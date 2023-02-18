@@ -24,7 +24,11 @@ public class ATM {
 	private static int count2=0;
 	private static int flag;
 	private static int a=0;
-
+        
+	/*
+	This is a static method which creates an account number for the new user.
+	It doesn't take any parameters and returns a String variable containing the Account Number which is generated using the Random class 
+	*/
 	public static String create_Account_Number() {
 		Random random = new Random();
 		String account="";
