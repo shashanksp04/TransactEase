@@ -60,4 +60,4 @@ This project is licensed under the [MIT License](LICENSE). Feel free to modify a
 
 ## Contact
 
-If you have any questions or inquiries regarding the project, please feel free to contact the project owner at [email address].
+If you have any questions or inquiries regarding the project, please feel free to contact the project owner at ShashankPSingh2112@gmail.com.
